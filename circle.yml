@@ -10,9 +10,9 @@ jobs:
       - run: |
           export VERSION=${CIRCLE_TAG/v/}
           docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker build -t whefter/docker-cron:$VERSION -t whefter/docker-cron:latest .
-          docker push whefter/docker-cron:$VERSION
-          docker push whefter/docker-cron:latest
+          docker build -t whefter/cron:$VERSION -t whefter/cron:latest .
+          docker push whefter/cron:$VERSION
+          docker push whefter/cron:latest
 workflows:
   version: 2
   build-deploy:
