@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: 18.06.1-ce-git
+    working_directory: /src
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: |
+          export VERSION=${CIRCLE_TAG/v/}
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          docker build -t whefter/docker-cron:$VERSION -t whefter/docker-cron:latest .
+          docker push whefter/docker-cron:$VERSION
+          docker push whefter/docker-cron:latest
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /^v.*/
