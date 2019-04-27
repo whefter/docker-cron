@@ -12,7 +12,7 @@ Note that to use the `docker` command inside the container, you need to mount `d
 Inside your `docker-compose.yml`:
 ```yaml
   cron:
-    image: registry.pwnicorn.de/wh/docker-cron
+    image: whefter/cron
     restart: always
     # Recommend to minimize exposure
     network_mode: none
