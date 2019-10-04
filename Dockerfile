@@ -19,7 +19,8 @@ RUN apt-get update \
         gnupg2 \
         software-properties-common \
     && apt-get autoremove --purge -y \
-    && rm -rf /tmp/* /var/lib/apt/lists/* /var/cache/apt/*
+    && apt-get clean -y \
+    && rm -rf /tmp/* /var/lib/apt/lists/*
 
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
