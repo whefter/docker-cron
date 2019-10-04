@@ -13,7 +13,7 @@ RUN apt-get update \
        $(lsb_release -cs) \
        stable" \
     && apt-get update \
-    && apt-get -y install docker-ce \
+    && apt-get -y install docker-ce-cli \
     && apt-get purge -y \
         apt-transport-https \
         gnupg2 \
