@@ -19,9 +19,9 @@ Inside your `docker-compose.yml`:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
-      - "CRON_FOO=0 3 * * * root curl https://api.your-service.org/cron.php"
-      - "CRON_BACKUP=0 4 * * * root rsync -a /opt /mnt/backup/opt"
-      - "CRON_DOCKER=30 4 * * * root docker exec service-container /backup.sh"
+      - "CRON_FOO=0 3 * * * curl https://api.your-service.org/cron.php"
+      - "CRON_BACKUP=0 4 * * * rsync -a /opt /mnt/backup/opt"
+      - "CRON_DOCKER=30 4 * * * docker exec service-container /backup.sh"
 ```
 
 

@@ -1,26 +1,8 @@
-FROM ubuntu:18.04
+FROM alpine:latest
 
-RUN apt-get update \
-    && apt-get -y install dumb-init cron \
-        apt-transport-https \
-        ca-certificates \
-        curl \
-        gnupg2 \
-        software-properties-common \
-    && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
-    && add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-       $(lsb_release -cs) \
-       stable" \
-    && apt-get update \
-    && apt-get -y install docker-ce-cli \
-    && apt-get purge -y \
-        apt-transport-https \
-        gnupg2 \
-        software-properties-common \
-    && apt-get autoremove --purge -y \
-    && apt-get clean -y \
-    && rm -rf /tmp/* /var/lib/apt/lists/*
+RUN apk add --no-cache \
+    # Common tools
+    bash docker-cli curl dumb-init flock rsync wget openssh
 
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
