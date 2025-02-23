@@ -2,7 +2,7 @@ FROM alpine:latest
 
 RUN apk add --no-cache \
     # Common tools
-    bash docker-cli curl dumb-init flock rsync wget openssh
+    bash docker-cli curl dumb-init flock rsync wget openssh tzdata
 
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
